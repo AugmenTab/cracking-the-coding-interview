@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -33,6 +34,14 @@ public abstract class Chapter1 {
       }
     }
     return true;
+  }
+
+  public static boolean checkPermutation(String input1, String input2) {
+    char[] sorted1 = input1.toCharArray();
+    char[] sorted2 = input2.toCharArray();
+    Arrays.sort(sorted1);
+    Arrays.sort(sorted2);
+    return Arrays.equals(sorted1, sorted2);
   }
 
 }

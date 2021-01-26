@@ -1,0 +1,5 @@
+input1,input2,expected
+abcd,dcba,true
+name,mane,true
+aaa,bbb,false
+type,byte,false
