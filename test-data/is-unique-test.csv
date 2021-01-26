@@ -1,0 +1,5 @@
+input,expected
+banana,false
+abcd,true
+aa, false
+aA,true
