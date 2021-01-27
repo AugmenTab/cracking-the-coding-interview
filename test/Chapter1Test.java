@@ -34,4 +34,11 @@ class Chapter1Test {
     assertEquals(expected, Chapter1.checkPermutation(input1, input2));
   }
 
+  @DisplayName("URLify")
+  @ParameterizedTest(name = "[{index}]: input = {0}, expected = {1};")
+  @CsvFileSource(resources = "urlify-test.csv", numLinesToSkip = 1)
+  void urlify(String input, String expected) {
+    assertEquals(expected, Chapter1.urlify(input));
+  }
+
 }

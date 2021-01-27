@@ -44,4 +44,21 @@ public abstract class Chapter1 {
     return Arrays.equals(sorted1, sorted2);
   }
 
+  public static String urlify(String input) {
+    char[] data = input.toCharArray();
+    for (int i = 0; i < data.length; i++) {
+      if (data[i] == ' ') {
+        for (int j = data.length - 1; j > i + 2; j-= 2) {
+          data[j] = data[j - 2];
+          data [j - 1] = data[j - 3];
+        }
+        data[i] = '%';
+        data[i + 1] = '2';
+        data[i + 2] = '0';
+        i += 2;
+      }
+    }
+    return new String(data);
+  }
+
 }

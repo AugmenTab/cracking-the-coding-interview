@@ -1,0 +1,4 @@
+input,expected
+test,test
+"Mr John Smith    ",Mr%20John%20Smith
+"more  than  one  space            ",more%20%20than%20%20one%20%20space
