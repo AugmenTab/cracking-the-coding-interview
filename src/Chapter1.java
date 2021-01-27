@@ -61,4 +61,16 @@ public abstract class Chapter1 {
     return new String(data);
   }
 
+  public static boolean palindromePermutation(String input) {
+    return false;
+  }
+
+  public static boolean oneAway(String input1, String input2) {
+    for (int i = 0; i < input1.length(); i++) {
+      String snip = input1.substring(i, i + 1);
+      input2 = input2.replaceFirst(snip, "");
+    }
+    return (input2.length() < 2);
+  }
+
 }

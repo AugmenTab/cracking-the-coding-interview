@@ -1,0 +1,5 @@
+input1,input2,expected
+pale,ple,true
+pales,pale,true
+pale,bale,true
+pale,bake,false
