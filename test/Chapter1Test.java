@@ -41,6 +41,13 @@ class Chapter1Test {
     assertEquals(expected, Chapter1.urlify(input));
   }
 
+  @DisplayName("URLify w/ StringBuilder")
+  @ParameterizedTest(name = "[{index}]: input = {0}, expected = {1};")
+  @CsvFileSource(resources = "urlify-test.csv", numLinesToSkip = 1)
+  void urlifyBuilder(String input, String expected) {
+    assertEquals(expected, Chapter1.urlifyBuilder(input));
+  }
+
   // Test for Palindrome Permutation
 
   @DisplayName("One Away")

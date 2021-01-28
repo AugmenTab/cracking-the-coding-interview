@@ -65,7 +65,9 @@ public abstract class Chapter1 {
   * creating a loop to check each element for the char ' '. Upon finding one, I shifted the array to
   * the right two spaces, then added the '%20' chars in their appropriate places. Then, I continued
   * the loop from what was originally the next element prior to the shift. Once complete, I returned
-  * the modified array as a new string. */
+  * the modified array as a new string. I would have used a StringBuilder, but the instructions
+   * included an additional directive to use a char array and perform the operation in-place if
+   * doing these practice problems in Java. I have added the StringBuilder solution below. */
   public static String urlify(String input) {
     char[] data = input.toCharArray();
     for (int i = 0; i < data.length; i++) {
@@ -82,6 +84,25 @@ public abstract class Chapter1 {
     }
     return new String(data);
   }
+
+  /* 1.3: "Write a method to replace all spaces in a string with '%20.' You may assume that the
+  * string has sufficient space at the end to hold the additional characters, and that you are given
+  * the 'true' length of the string." For this version of the method, I stripped any whitespace off
+  * the end of the turned the string into an array of chars again, then made a StringBuilder as
+  * large as the original input string's length, since I know that we can assume the input string
+  * will contain the necessary number of characters. I then looped over the char array and used a
+  * ternary to append either the char or '%20' to the StringBuilder instead of doing the operation
+  * in-place on the char array. I find that this one is easier to understand on first viewing than
+  * the other version. */
+  public static String urlifyBuilder(String input) {
+    char[] data = input.replaceFirst("\\s++$", "").toCharArray();
+    StringBuilder result = new StringBuilder(input.length());
+    for (char c : data) {
+      result.append(c == ' ' ? "%20" : c);
+    }
+    return result.toString();
+  }
+
 
   public static boolean palindromePermutation(String input) {
     return false;
