@@ -1,0 +1,6 @@
+input,expected
+"Tact Coa",true
+"aa",true
+"yaKak",true
+"forever",false
+"two",false

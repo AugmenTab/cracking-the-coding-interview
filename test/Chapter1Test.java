@@ -48,7 +48,12 @@ class Chapter1Test {
     assertEquals(expected, Chapter1.urlifyBuilder(input));
   }
 
-  // Test for Palindrome Permutation
+  @DisplayName("Palindrome Permutation")
+  @ParameterizedTest(name = "[{index}]: input = {0}, expected = {1}")
+  @CsvFileSource(resources = "palindrome-permutation-test.csv", numLinesToSkip = 1)
+  void palindromePermutation(String input, boolean expected) {
+    assertEquals(expected, Chapter1.palindromePermutation(input));
+  }
 
   @DisplayName("One Away")
   @ParameterizedTest(name = "[{index}]: input1 = {0}, input2 = {1}, expected = {3};")

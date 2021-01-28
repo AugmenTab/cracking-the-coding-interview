@@ -1,5 +1,7 @@
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -103,9 +105,23 @@ public abstract class Chapter1 {
     return result.toString();
   }
 
-
+  /* 1.4: "Given a string, write a function to check if it is a permutation of a palindrome. The
+  * palindrome does not need to be limited to just dictionary words." In order to be considered a
+  * palindrome, the string can have a maximum of 1 character that appears an odd number of times.
+  * So, I opted to approach this one by keeping track of how many characters appear an odd number of
+  * times in the input string. I do this with a set - for each char in the array, I attempt to
+  * remove it from the set. If it cannot be removed, then I add it. At the end, if the set has more
+  * than 1 item in it, the string must have more than one char appearing an odd number of times, so
+  * it cannot be a permutation of a palindrome. */
   public static boolean palindromePermutation(String input) {
-    return false;
+    Set<Character> odds = new HashSet<>();
+    char[] data = input.replaceAll("\\s", "").toLowerCase().toCharArray();
+    for (char c : data) {
+      if (!odds.remove(c)) {
+        odds.add(c);
+      }
+    }
+    return odds.size() <= 1;
   }
 
   /* 1.5: "Given two strings, write a function to check if they are one edit (or zero edits) away."
