@@ -136,4 +136,32 @@ public abstract class Chapter1 {
     return (input2.length() < 2);
   }
 
+  /* 1.6: "Implement a method to perform basic string compression using the counts of repeated
+  * characters. For example, the string aabcccccaaa would become a2b1c5a3. If the compressed string
+  * would not become smaller than the original string, your method should return the original
+  * string. You can assume the string has only uppercase and lowercase letters." I started by
+  * turning the input string into a char array and creating a new StringBuilder. I looped over the
+  * char array, keeping track of the last char and the number of times that char has appeared in a
+  * row. If the current element in the array is the equal to the last item, it increments the count.
+  * Otherwise, it appends the last character and its counter to the StringBuilder and starts over
+  * counting with the new character. At the end, it appends the final character and count, then
+  * compares the length of the new string to the original, returning the shorter of the two. */
+  public static String stringCompression(String input) {
+    char[] data = input.toCharArray();
+    StringBuilder result = new StringBuilder(input.length());
+    char last = data[0];
+    int count = 0;
+    for (char c : data) {
+      if (c == last) {
+        count++;
+      } else {
+        result.append(last).append(count);
+        last = c;
+        count = 1;
+      }
+    }
+    String compressed = result.append(last).append(count).toString();
+    return (compressed.length() > input.length()) ? input : compressed;
+  }
+
 }

@@ -62,4 +62,11 @@ class Chapter1Test {
     assertEquals(expected, Chapter1.oneAway(input1, input2));
   }
 
+  @DisplayName("String Compression")
+  @ParameterizedTest(name = "[{index}]: input = {0}, expected = {1}")
+  @CsvFileSource(resources = "string-compression-test.csv", numLinesToSkip = 1)
+  void stringCompression(String input, String expected) {
+    assertEquals(expected, Chapter1.stringCompression(input));
+  }
+
 }
