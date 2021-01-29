@@ -1,7 +1,5 @@
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -45,6 +43,22 @@ public abstract class Chapter1 {
         if (data[i] == data[j]) {
           return false;
         }
+      }
+    }
+    return true;
+  }
+
+  /* 1.1: "Implement an algorithm to determine if a string has all unique characters. What if you
+   * cannot use additional data structures?" Focusing on the second part of the problem. This is an
+   * even simpler solution than the previous implementation. Rather than a second loop, this version
+   * sorts the array first, then checks if the current item is the same as the previous item, and if
+   * it is at any point, it returns false. */
+  public static boolean isUniqueSort(String input) {
+    char[] data = input.toCharArray();
+    Arrays.sort(data);
+    for (int i = 0; i < data.length - 1; i++) {
+      if (data[i] == data[i + 1]) {
+        return false;
       }
     }
     return true;
@@ -162,6 +176,12 @@ public abstract class Chapter1 {
     }
     String compressed = result.append(last).append(count).toString();
     return (compressed.length() > input.length()) ? input : compressed;
+  }
+
+  /* 1.7: "Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes,
+  * write a method to rotate the image by 90 degrees. Can you do this in place?" */
+  public static byte[][] rotateMatrix(byte[][] input) {
+    return input;
   }
 
 }

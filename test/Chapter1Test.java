@@ -27,6 +27,13 @@ class Chapter1Test {
     assertEquals(expected, Chapter1.isUniqueNoAdditionalDataStructures(input));
   }
 
+  @DisplayName("Is Unique Test: Sort")
+  @ParameterizedTest(name = "[{index}]: input = {0}, expected = {1};")
+  @CsvFileSource(resources = "is-unique-test.csv", numLinesToSkip = 1)
+  void isUniqueSort(String input, boolean expected) {
+    assertEquals(expected, Chapter1.isUniqueSort(input));
+  }
+
   @DisplayName("Check Permutation")
   @ParameterizedTest(name = "[{index}]: input1 = {0}, input2 = {1}, expected = {3};")
   @CsvFileSource(resources = "check-permutation-test.csv", numLinesToSkip = 1)
