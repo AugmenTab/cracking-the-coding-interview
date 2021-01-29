@@ -1,5 +1,9 @@
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -193,6 +197,22 @@ public abstract class Chapter1 {
   /* 1.8: "Write an algorithm such that if an element in an MxN matrix is 0, its entire row and
   * column are set to 0." */
   public static int[][] zeroMatrix(int[][] input) {
+    Set<Integer> rows = new HashSet<>();
+    Set<Integer> cols = new HashSet<>();
+    for (int i = 0; i < input.length; i++) {
+      for (int j = 0; j < input[i].length; j++) {
+        if (input[i][j] == 0) {
+          rows.add(i);
+          cols.add(j);
+        }
+      }
+    }
+    rows.forEach((e) -> Arrays.fill(input[e], 0));
+    cols.forEach((e) -> {
+      for (int i = 0; i < input.length; i++) {
+        input[i][e] = 0;
+      }
+    });
     return input;
   }
 

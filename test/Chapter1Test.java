@@ -1,10 +1,45 @@
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class Chapter1Test {
+
+  static Stream<Arguments> zeroMatrix() {
+    return Stream.of(
+        Arguments.of(
+            new int[][]{
+                {1, 0, 1, 1},
+                {2, 2, 2, 2},
+                {3, 3, 3, 3},
+                {4, 4, 0, 4},
+                {0, 5, 5, 5}
+            },
+            new int[][]{
+                {0, 0, 0, 0},
+                {0, 0, 0, 2},
+                {0, 0, 0, 3},
+                {0, 0, 0, 0},
+                {0, 0, 0, 0}
+            }
+        ),
+        Arguments.of(
+            new int[][]{
+                {1, 1, 1},
+                {2, 2, 0}
+            },
+            new int[][]{
+                {1, 1, 0},
+                {0, 0, 0}
+            }
+        )
+    );
+  }
 
   @DisplayName("Is Unique Test: Stream")
   @ParameterizedTest(name = "[{index}]: input = {0}, expected = {1};")
@@ -78,7 +113,15 @@ class Chapter1Test {
 
   // Test for 1.7
 
-  // Test for 1.8
+  @DisplayName("Zero Matrix")
+  @ParameterizedTest(name = "[{index}]: input = {0}, expected = {1}")
+  @MethodSource
+  void zeroMatrix(int[][] input, int[][] expected) {
+    int[][] result = Chapter1.zeroMatrix(input);
+    for (int i = 0; i < input.length; i++) {
+      assertArrayEquals(expected[i], result[i]);
+    }
+  }
 
   @DisplayName("String Rotation")
   @ParameterizedTest(name = "[{index}]: input1 = {0}, input2 = {1}, expected = {3};")
