@@ -184,4 +184,32 @@ public abstract class Chapter1 {
     return input;
   }
 
+  /* 1.7: "Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes,
+   * write a method to rotate the image by 90 degrees. Can you do this in place?" */
+  public static byte[][] rotateMatrixInPlace(byte[][] input) {
+    return input;
+  }
+
+  /* 1.8: "Write an algorithm such that if an element in an MxN matrix is 0, its entire row and
+  * column are set to 0." */
+  public static int[][] zeroMatrix(int[][] input) {
+    return input;
+  }
+
+  /* 1.9: "Assume you have a method isSubstring which checks if one word is a substring of another.
+  * Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call
+  * to isSubstring (e.g. waterbottle is a rotation of erbottlewat)." Only if the two strings are of
+  * equal length could they be rotations, so that's the first check. If they are equal length, s1
+  * can be concatenated to itself, and if s2 is a rotation of s1 then it will be found somewhere in
+  * the middle of that. That concatenation and s2 get passed to isSubstring, and the method returns
+  * whatever it got back from isSubstring. */
+  public static boolean stringRotation(String s1, String s2) {
+    return (s1.length() == s2.length()) && isSubstring(s1 + s1, s2);
+  }
+
+  // Private helper method for 1.9.
+  private static boolean isSubstring(String s1, String s2) {
+    return s1.contains(s2);
+  }
+
 }

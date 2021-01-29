@@ -76,4 +76,15 @@ class Chapter1Test {
     assertEquals(expected, Chapter1.stringCompression(input));
   }
 
+  // Test for 1.7
+
+  // Test for 1.8
+
+  @DisplayName("String Rotation")
+  @ParameterizedTest(name = "[{index}]: input1 = {0}, input2 = {1}, expected = {3};")
+  @CsvFileSource(resources = "string-rotation-test.csv", numLinesToSkip = 1)
+  void stringRotation(String input1, String input2, boolean expected) {
+    assertEquals(expected, Chapter1.stringRotation(input1, input2));
+  }
+
 }
