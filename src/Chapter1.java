@@ -219,12 +219,15 @@ public abstract class Chapter1 {
   /* 1.9: "Assume you have a method isSubstring which checks if one word is a substring of another.
   * Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call
   * to isSubstring (e.g. waterbottle is a rotation of erbottlewat)." Only if the two strings are of
-  * equal length could they be rotations, so that's the first check. If they are equal length, s1
+  * equal length could they be rotations, so that's the first check. The second check ensures that
+  * both s1 and s2 are not empty strings - since they must already be equal length to reach this
+  * point, only one must be checked for positive length. If they are equal (and positive) length, s1
   * can be concatenated to itself, and if s2 is a rotation of s1 then it will be found somewhere in
   * the middle of that. That concatenation and s2 get passed to isSubstring, and the method returns
   * whatever it got back from isSubstring. */
   public static boolean stringRotation(String s1, String s2) {
-    return (s1.length() == s2.length()) && isSubstring(s1 + s1, s2);
+    int i = s1.length();
+    return (i == s2.length()) && (i > 0) && isSubstring(s1 + s1, s2);
   }
 
   // Private helper method for 1.9.
