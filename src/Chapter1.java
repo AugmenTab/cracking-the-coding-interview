@@ -88,7 +88,7 @@ public abstract class Chapter1 {
     char[] data = input.toCharArray();
     for (int i = 0; i < data.length; i++) {
       if (data[i] == ' ') {
-        for (int j = data.length - 1; j > i + 2; j-= 2) {
+        for (int j = data.length - 1; j > i + 2; j -= 2) {
           data[j] = data[j - 2];
           data [j - 1] = data[j - 3];
         }
@@ -191,7 +191,11 @@ public abstract class Chapter1 {
   }
 
   /* 1.8: "Write an algorithm such that if an element in an MxN matrix is 0, its entire row and
-  * column are set to 0." */
+  * column are set to 0." I solved this one by setting up two sets, one to hold the rows containing
+  * a zero, and another to hold the columns. Then, I looped over every array in the matrix, adding
+  * each row and column number that contained a zero to their respective sets. After that, I filled
+  * each of the arrays in the rows set with zeroes, then looped over all of the arrays in the matrix
+  * and changed each of the columns in that set to zero as well. */
   public static int[][] zeroMatrix(int[][] input) {
     Set<Integer> rows = new HashSet<>();
     Set<Integer> cols = new HashSet<>();
