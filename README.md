@@ -31,7 +31,7 @@ The following is a list of chapters from the book, given under subheadings for t
 
 ### Knowledge-Based
 
-12. C and C++
+12. C and C++ (I will not be doing these, as I do not know C or C++.)
 13. Java
 14. Databases
 15. Threads and Locks

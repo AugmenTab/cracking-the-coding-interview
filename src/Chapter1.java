@@ -201,6 +201,16 @@ public abstract class Chapter1 {
    * write a method to rotate the image by 90 degrees. Can you do this in place?" Focusing on doing
    * the rotating in-place. */
   public static byte[][] rotateMatrixInPlace(byte[][] input) {
+    int len = input.length;
+    for (int i = 0, j = len - 1; i < j; i++, j--) {
+      for (int k = i, m = j; k < j; k++, m--) {
+        byte temp = input[i][k];
+        input[i][k] = input[m][i];
+        input[m][i] = input[j][m];
+        input[j][m] = input[k][j];
+        input[k][j] = temp;
+      }
+    }
     return input;
   }
 

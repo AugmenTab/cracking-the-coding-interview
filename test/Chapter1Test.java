@@ -158,7 +158,7 @@ class Chapter1Test {
 
   @DisplayName("Rotate Matrix In-Place")
   @ParameterizedTest(name = "[{index}]: input = {0}, expected = {1}")
-  @MethodSource
+  @MethodSource("rotateMatrix")
   void rotateMatrixInPlace(byte[][] input, byte[][] expected) {
     byte[][] result = Chapter1.rotateMatrixInPlace(input);
     for (int i = 0; i < input.length; i++) {
