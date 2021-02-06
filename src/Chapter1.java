@@ -109,7 +109,8 @@ public abstract class Chapter1 {
   * will contain the necessary number of characters. I then looped over the char array and used a
   * ternary to append either the char or '%20' to the StringBuilder instead of doing the operation
   * in-place on the char array. I find that this one is easier to understand on first viewing than
-  * the other version. */
+  * the other version, though I would implement the first solution in a situation where careful
+  * memory management was a concern. */
   public static String urlifyBuilder(String input) {
     char[] data = input.replaceFirst("\\s++$", "").toCharArray();
     StringBuilder result = new StringBuilder(input.length());
@@ -179,13 +180,26 @@ public abstract class Chapter1 {
   }
 
   /* 1.7: "Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes,
-  * write a method to rotate the image by 90 degrees. Can you do this in place?" */
+  * write a method to rotate the image by 90 degrees. Can you do this in place?" Focusing on the
+  * first part of the problem, without doing the implementation in-place. This method loops with two
+  * values: one starting at zero and incrementing by 1, the other starting at the end and
+  * decrementing by one. This keeps track of the current array in the matrix and the position of the
+  * final column. Then, it loops again over the current array in the matrix, copying each element
+  * into last empty column. */
   public static byte[][] rotateMatrix(byte[][] input) {
-    return input;
+    int len = input.length;
+    byte[][] rotated = new byte[len][len];
+    for (int i = 0, j = len - 1; i < len; i++, j--) {
+      for (int k = 0; k < len; k++) {
+        rotated[k][j] = input[i][k];
+      }
+    }
+    return rotated;
   }
 
   /* 1.7: "Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes,
-   * write a method to rotate the image by 90 degrees. Can you do this in place?" */
+   * write a method to rotate the image by 90 degrees. Can you do this in place?" Focusing on doing
+   * the rotating in-place. */
   public static byte[][] rotateMatrixInPlace(byte[][] input) {
     return input;
   }

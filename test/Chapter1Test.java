@@ -10,6 +10,41 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class Chapter1Test {
 
+  static Stream<Arguments> rotateMatrix() {
+    return Stream.of(
+        Arguments.of(
+            new byte[][]{
+                {1, 1, 1},
+                {2, 2, 2},
+                {3, 3, 3}
+            },
+            new byte[][]{
+                {3, 2, 1},
+                {3, 2, 1},
+                {3, 2, 1}
+            }
+        ),
+        Arguments.of(
+            new byte[][]{
+                {8, 3, 8, 2, 9, 7},
+                {8, 6, 0, 2, 5, 1},
+                {5, 8, 6, 1, 0, 6},
+                {9, 6, 2, 4, 7, 9},
+                {8, 2 ,6, 0, 2, 8},
+                {0, 0, 1, 7, 1, 9}
+            },
+            new byte[][]{
+                {0, 8, 9, 5, 8, 8},
+                {0, 2, 6, 8, 6, 3},
+                {1, 6, 2, 6, 0, 8},
+                {7, 0, 4, 1, 2, 2},
+                {1, 2, 7, 0, 5, 9},
+                {9, 8, 9, 6, 1, 7}
+            }
+        )
+    );
+  }
+
   static Stream<Arguments> zeroMatrix() {
     return Stream.of(
         Arguments.of(
@@ -111,7 +146,25 @@ class Chapter1Test {
     assertEquals(expected, Chapter1.stringCompression(input));
   }
 
-  // Test for 1.7
+  @DisplayName("Rotate Matrix")
+  @ParameterizedTest(name = "[{index}]: input = {0}, expected = {1}")
+  @MethodSource
+  void rotateMatrix(byte[][] input, byte[][] expected) {
+    byte[][] result = Chapter1.rotateMatrix(input);
+    for (int i = 0; i < input.length; i++) {
+      assertArrayEquals(expected[i], result[i]);
+    }
+  }
+
+  @DisplayName("Rotate Matrix In-Place")
+  @ParameterizedTest(name = "[{index}]: input = {0}, expected = {1}")
+  @MethodSource
+  void rotateMatrixInPlace(byte[][] input, byte[][] expected) {
+    byte[][] result = Chapter1.rotateMatrixInPlace(input);
+    for (int i = 0; i < input.length; i++) {
+      assertArrayEquals(expected[i], result[i]);
+    }
+  }
 
   @DisplayName("Zero Matrix")
   @ParameterizedTest(name = "[{index}]: input = {0}, expected = {1}")
